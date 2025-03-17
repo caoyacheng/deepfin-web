@@ -38,7 +38,7 @@ const Navbar = () => {
     { name: "首页", path: "/" },
     { name: "解决方案", path: "/solutions" },
     { name: "客户案例", path: "/stories" },
-    { name: "关于我们", path: "/about" },
+    // { name: "关于我们", path: "/about" },
     { name: "API开放平台", path: "/apiconsle" },
   ];
 

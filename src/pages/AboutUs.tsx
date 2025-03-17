@@ -7,7 +7,7 @@ import { ArrowRight, Award, Rocket, Target, Users } from "lucide-react";
 const AboutUs = () => {
   const founders = [
     {
-      name: "张伟",
+      name: "阴总",
       title: "创始人兼首席执行官",
       bio: "曾任职于阿里巴巴金融科技部门，拥有15年金融科技经验。斯坦福大学计算机科学博士。",
       image:

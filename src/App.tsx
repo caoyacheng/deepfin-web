@@ -1,16 +1,14 @@
-
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import AboutUs from "./pages/AboutUs";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Chat from "./pages/Chat";
 import Contact from "./pages/Contact";
 import CustomerStories from "./pages/CustomerStories";
-import Solutions from "./pages/Solutions";
-import Chat from "./pages/Chat";
+import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Solutions from "./pages/Solutions";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +20,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutUs />} />
+          {/* <Route path="/about" element={<AboutUs />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/stories" element={<CustomerStories />} />
           <Route path="/solutions" element={<Solutions />} />

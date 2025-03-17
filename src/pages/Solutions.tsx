@@ -1,12 +1,26 @@
-
-import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BarChart3, Building2, CreditCard, GanttChart, Globe, Lock, PieChart, ShieldCheck } from "lucide-react";
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Link } from 'react-router-dom';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  ArrowRight,
+  BarChart3,
+  CreditCard,
+  GanttChart,
+  Lock,
+  PieChart,
+  ShieldCheck,
+} from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // 定义解决方案类型
 interface Solution {
@@ -20,215 +34,168 @@ interface Solution {
 
 // 按行业分类的解决方案数据
 const solutionsByIndustry: Record<string, Solution[]> = {
-  "银行与金融": [
+  银行与保险: [
     {
       id: "risk-management",
-      title: "智能风控系统",
-      description: "基于深度学习的实时风险评估与欺诈检测系统，为金融机构提供全方位的风险防控。",
+      title: "智能报告生成",
+      description:
+        "基于大语言大模型的文档生成能力，面向具体客户业务场景，提供针对性的报告生成。",
       icon: ShieldCheck,
       features: [
-        "实时交易监控与风险评分",
-        "多维度用户行为分析",
-        "异常交易自动预警",
-        "欺诈模式识别与预测",
-        "合规风险评估"
+        "报告一键生成",
+        "灵活的模版配置",
+        "支持模版修改",
+        "生成内容随时可编辑",
+        "支持下载和分享",
       ],
       benefits: [
-        "降低欺诈损失达60%",
-        "减少误报率超过40%",
-        "提高风控决策速度300%",
-        "优化客户体验",
-        "降低合规风险"
-      ]
+        "报告生成效率提升5倍",
+        "报告质量大幅提升",
+        "报告准确度提升",
+        "降低人工处理",
+        "降低人工成本",
+      ],
     },
     {
       id: "payment-solutions",
-      title: "新一代支付解决方案",
-      description: "整合传统支付与新兴支付技术，提供安全、高效、低成本的一站式支付服务。",
+      title: "保险营销话术智能生成",
+      description:
+        "通过大模型自动分析保险产品特点，针对性生成营销策略和话术，提升产品营销成功率",
       icon: CreditCard,
       features: [
-        "多渠道支付整合",
-        "跨境支付优化",
-        "智能路由与手续费优化",
-        "实时结算",
-        "支付风控"
+        "产品智能理解与分析",
+        "营销话术智能生成",
+        "Q&A 互动",
+        "结合移动大数据标签",
+        "多维度分析与优化",
       ],
       benefits: [
-        "交易成功率提升15%",
-        "支付处理成本降低30%",
-        "客户转化率提高25%",
-        "跨境支付时间缩短80%",
-        "提升支付安全性"
-      ]
-    }
+        "营销成功率提升50%",
+        "营销话术生成效率提升5倍",
+        "客户满意度提升",
+        "人工成本降低",
+        "用户画像更加精准",
+      ],
+    },
   ],
-  "企业金融": [
+  政府公共: [
     {
       id: "supply-chain-finance",
-      title: "供应链金融平台",
-      description: "连接核心企业、供应商与金融机构的智能供应链金融服务，解决中小企业融资难题。",
+      title: "税务助手",
+      description:
+        "基于AI技术的税务助手，为税务部门提供智能分析与决策支持，提升税务效率。",
       icon: GanttChart,
       features: [
-        "基于交易数据的信用评估",
-        "动态额度管理",
-        "多级供应商融资",
-        "区块链确权与防篡改",
-        "多金融机构对接"
+        "基于税务数据的精准分析",
+        "智能税务风险预警",
+        "个性化税务筹划建议",
+        "税务申报自动化处理",
+        "多渠道税务政策解读",
       ],
       benefits: [
-        "供应商融资成本降低25%",
-        "融资放款速度提升90%",
-        "供应链稳定性提高50%",
-        "核心企业资金效率提升35%",
-        "金融机构风险控制优化"
-      ]
+        "税务申报错误率降低50%",
+        "税务处理效率提升80%",
+        "税务合规风险降低70%",
+        "企业税务成本降低30%",
+        "税务政策响应速度加快",
+      ],
     },
     {
       id: "treasury-management",
-      title: "企业资金管理系统",
-      description: "基于AI与大数据的企业资金管理平台，优化现金流、投融资决策与财务风险管理。",
+      title: "财务审核",
+      description:
+        "基于大模型文本抽取和审核能力，自动进行差旅、业务招待、ICT项目、合同等智能审核",
       icon: BarChart3,
       features: [
-        "全球资金池管理",
-        "智能现金流预测",
-        "FX风险管理",
-        "投融资决策支持",
-        "多银行账户整合"
+        "文本抽取自动化",
+        "多类型审核覆盖",
+        "审核规则灵活配置",
+        "审核结果实时反馈",
+        "审核记录可追溯",
       ],
       benefits: [
-        "资金使用效率提升40%",
-        "财务成本降低20%",
-        "现金流预测准确率达92%",
-        "汇率风险敞口减少30%",
-        "财务决策效率提高"
-      ]
-    }
-  ],
-  "跨境贸易": [
-    {
-      id: "cross-border-payment",
-      title: "跨境支付与结算",
-      description: "结合区块链与人工智能技术，提供快速、低成本、合规的全球支付与结算服务。",
-      icon: Globe,
-      features: [
-        "多币种实时结算",
-        "智能汇率优化",
-        "合规性自动检查",
-        "全球支付网络接入",
-        "支付追踪与透明度"
+        "审核效率提升50%",
+        "降低漏审风险80%",
+        "减少人工调整成本30%",
+        "问题处理时间缩短60%",
+        "审计合规性提高90%",
       ],
-      benefits: [
-        "跨境支付时间从天级缩短至分钟级",
-        "交易成本降低40%",
-        "汇率优化节省2-3%",
-        "合规风险大幅降低",
-        "提升交易透明度"
-      ]
     },
-    {
-      id: "trade-finance",
-      title: "智能贸易金融",
-      description: "数字化的贸易金融解决方案，通过智能合约与数据分析简化信用证、保函等贸易金融产品。",
-      icon: Building2,
-      features: [
-        "电子信用证处理",
-        "智能贸易合规检查",
-        "贸易融资匹配平台",
-        "供应链可视化",
-        "贸易单据数字化"
-      ],
-      benefits: [
-        "贸易融资审批时间缩短80%",
-        "单据处理成本降低60%",
-        "融资获取能力提升50%",
-        "贸易欺诈风险降低70%",
-        "提高贸易效率"
-      ]
-    }
   ],
-  "数据安全": [
+  大模型工具: [
     {
       id: "financial-data-security",
-      title: "金融数据安全方案",
-      description: "专为金融机构设计的数据安全解决方案，保护敏感信息同时支持数据价值挖掘。",
+      title: "微调数据自动配比工具",
+      description:
+        "专为大模型微调数据配比开发，解决大模型微调数据配比难题，提高模型效果。",
       icon: Lock,
-      features: [
-        "端到端数据加密",
-        "隐私计算框架",
-        "多方安全计算",
-        "区块链数据确权",
-        "合规审计支持"
-      ],
+      features: ["自动数据配比", "无需人工干预", "最优微调效果", "可视化展示"],
       benefits: [
-        "在保护隐私的同时实现数据价值",
-        "满足全球数据合规要求",
-        "降低数据泄露风险99%",
-        "实现安全的数据协作",
-        "建立数据安全信任机制"
-      ]
+        "数据配比精准",
+        "降低人工成本50%",
+        "微调效率提升100%",
+        "模型效果大幅提升",
+      ],
     },
     {
       id: "risk-analytics",
-      title: "金融风险分析平台",
-      description: "集成市场、信用与操作风险的综合分析平台，为机构提供全面的风险管理视图。",
+      title: "智能体和知识库构建平台",
+      description: "通过大模型技术，为企业构建智能体和知识库，提升决策效率。",
       icon: PieChart,
-      features: [
-        "多维度风险仪表盘",
-        "情景分析与压力测试",
-        "风险限额管理",
-        "资本充足率优化",
-        "监管报告自动化"
-      ],
+      features: ["本地知识库", "可视化智能体构建", "多模型集成", "多工具集成"],
       benefits: [
-        "风险识别能力提高75%",
-        "资本使用效率提升30%",
-        "监管合规成本降低50%",
-        "决策反应时间缩短60%",
-        "全面风险控制"
-      ]
-    }
-  ]
+        "智能体构建效率提升50%",
+        "本地知识库轻松创建",
+        "业务开发效率提升20%",
+        "交付效率提升50%",
+      ],
+    },
+  ],
 };
 
 // 行业分类
 const industries = [
-  { id: "银行与金融", label: "银行与金融" },
-  { id: "企业金融", label: "企业金融" },
-  { id: "跨境贸易", label: "跨境贸易" },
-  { id: "数据安全", label: "数据安全" }
+  { id: "银行与保险", label: "银行与保险" },
+  { id: "政府公共", label: "政府公共" },
+  { id: "大模型工具", label: "大模型工具" },
 ];
 
 const Solutions = () => {
-  const [selectedIndustry, setSelectedIndustry] = useState<string>("银行与金融");
-  
+  const [selectedIndustry, setSelectedIndustry] =
+    useState<string>("银行与保险");
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      
+
       <main className="flex-grow pt-20">
         {/* 解决方案头部 */}
         <section className="bg-gradient-to-r from-indigo-50 via-white to-indigo-50 py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 gradient-text">
-                智能金融解决方案
+                人工智能行业解决方案
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
-                DeepFin提供全面的金融科技解决方案，帮助企业应对数字化转型挑战，提升业务效率与客户体验
+                DeepFin提供全面的垂直行业大模型解决方案，帮助企业应对数字化转型挑战，提升业务效率与客户体验
               </p>
             </div>
           </div>
         </section>
-        
+
         {/* 解决方案内容 */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <Tabs defaultValue={selectedIndustry} onValueChange={setSelectedIndustry} className="w-full">
+            <Tabs
+              defaultValue={selectedIndustry}
+              onValueChange={setSelectedIndustry}
+              className="w-full"
+            >
               <div className="flex justify-center mb-12">
                 <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent">
                   {industries.map((industry) => (
-                    <TabsTrigger 
-                      key={industry.id} 
+                    <TabsTrigger
+                      key={industry.id}
                       value={industry.id}
                       className="rounded-full data-[state=active]:bg-accent data-[state=active]:text-accent-foreground"
                     >
@@ -237,18 +204,27 @@ const Solutions = () => {
                   ))}
                 </TabsList>
               </div>
-              
+
               {industries.map((industry) => (
-                <TabsContent key={industry.id} value={industry.id} className="space-y-12">
+                <TabsContent
+                  key={industry.id}
+                  value={industry.id}
+                  className="space-y-12"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {solutionsByIndustry[industry.id].map((solution) => (
-                      <Card key={solution.id} className="hover-scale overflow-hidden">
+                      <Card
+                        key={solution.id}
+                        className="hover-scale overflow-hidden"
+                      >
                         <CardHeader className="pb-2 flex flex-row items-start justify-between">
                           <div>
                             <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
                               <solution.icon className="h-6 w-6 text-accent" />
                             </div>
-                            <CardTitle className="text-xl">{solution.title}</CardTitle>
+                            <CardTitle className="text-xl">
+                              {solution.title}
+                            </CardTitle>
                             <CardDescription className="mt-2">
                               {solution.description}
                             </CardDescription>
@@ -257,10 +233,15 @@ const Solutions = () => {
                         <CardContent>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                              <h4 className="font-medium text-sm mb-3">核心功能</h4>
+                              <h4 className="font-medium text-sm mb-3">
+                                核心功能
+                              </h4>
                               <ul className="space-y-2">
                                 {solution.features.map((feature, index) => (
-                                  <li key={index} className="text-sm flex items-start">
+                                  <li
+                                    key={index}
+                                    className="text-sm flex items-start"
+                                  >
                                     <span className="text-accent mr-2">•</span>
                                     <span>{feature}</span>
                                   </li>
@@ -268,10 +249,15 @@ const Solutions = () => {
                               </ul>
                             </div>
                             <div>
-                              <h4 className="font-medium text-sm mb-3">业务价值</h4>
+                              <h4 className="font-medium text-sm mb-3">
+                                业务价值
+                              </h4>
                               <ul className="space-y-2">
                                 {solution.benefits.map((benefit, index) => (
-                                  <li key={index} className="text-sm flex items-start">
+                                  <li
+                                    key={index}
+                                    className="text-sm flex items-start"
+                                  >
                                     <span className="text-accent mr-2">•</span>
                                     <span>{benefit}</span>
                                   </li>
@@ -283,7 +269,8 @@ const Solutions = () => {
                         <CardFooter>
                           <Link to="/contact" className="w-full">
                             <Button variant="outline" className="w-full">
-                              咨询解决方案 <ArrowRight className="ml-2 h-4 w-4" />
+                              咨询解决方案{" "}
+                              <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
                           </Link>
                         </CardFooter>
@@ -295,7 +282,7 @@ const Solutions = () => {
             </Tabs>
           </div>
         </section>
-        
+
         {/* 解决方案咨询 */}
         <section className="bg-muted py-16">
           <div className="container mx-auto px-4">
@@ -315,7 +302,7 @@ const Solutions = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );
