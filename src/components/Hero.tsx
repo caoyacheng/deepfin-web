@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-import { Compass } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -55,7 +53,7 @@ const Hero = () => {
             ref={titleRef}
             className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight"
           >
-            AI+金融的无限未来
+            人工智能的无限未来
           </h1>
 
           <p
@@ -70,17 +68,19 @@ const Hero = () => {
           className="opacity-0 animate-fade-up flex flex-wrap justify-center gap-8 w-full max-w-5xl"
           style={{ animationDelay: "0.5s", animationDuration: "0.8s" }}
         >
-          <div 
-            onClick={() => navigate('/chat')}
+          <div
+            onClick={() => navigate("/chat")}
             className="bg-white rounded-xl shadow-lg p-8 w-80 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] cursor-pointer"
           >
             <h3 className="text-2xl font-bold text-blue-600 mb-3">开始对话</h3>
             <p className="text-gray-600 text-sm">免费与金融投融资大模型对话</p>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-lg p-8 w-80 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] cursor-pointer">
             <h3 className="text-2xl font-bold text-blue-600 mb-3">AI智能体</h3>
-            <p className="text-gray-600 text-sm">提供文档生成、审核垂类智能体</p>
+            <p className="text-gray-600 text-sm">
+              提供文档生成、审核垂类智能体
+            </p>
           </div>
         </div>
         <span
